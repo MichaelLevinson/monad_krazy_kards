@@ -37,14 +37,21 @@ export async function GET(request: NextRequest) {
     
     // Create a session cookie
     const response = NextResponse.redirect(new URL('/', request.url));
-    response.cookies.set({
-      name: 'session',
-      value: JSON.stringify({ fid: user.fid }),
-      httpOnly: true,
-      secure: process.env.NODE_ENV === 'production',
-      sameSite: 'lax',
-      maxAge: 7 * 24 * 60 * 60 // 1 week
-    });
+    
+    // Make sure user exists before accessing properties
+    if (user) {
+      response.cookies.set({
+        name: 'session',
+        value: JSON.stringify({ fid: user.fid }),
+        httpOnly: true,
+        secure: process.env.NODE_ENV === 'production',
+        sameSite: 'lax',
+        maxAge: 7 * 24 * 60 * 60 // 1 week
+      });
+    } else {
+      // If user creation failed, redirect to error page
+      return NextResponse.redirect(new URL('/?error=user_creation_failed', request.url));
+    }
     
     return response;
   } catch (error) {
