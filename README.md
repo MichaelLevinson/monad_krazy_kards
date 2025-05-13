@@ -59,7 +59,7 @@ This app can be deployed to any static hosting service:
 
 ## Credits
 
-Created by [Your Name] as a Farcaster mini-app for the Monad ecosystem.
+Created by ActionObsolete as a Farcaster mini-app for the Monad ecosystem.
 
 ---
 
