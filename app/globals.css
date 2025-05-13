@@ -1,0 +1,38 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --monad-primary: #7857FF;
+  --monad-secondary: #6247D5;
+  --monad-light: #9F82FF;
+  --monad-dark: #3E2B8C;
+}
+
+body {
+  color: #333;
+  background-color: #f5f5f5;
+}
+
+/* Card flipping styles */
+.backface-hidden {
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+.transform-style-preserve-3d {
+  transform-style: preserve-3d;
+  -webkit-transform-style: preserve-3d;
+}
+
+.rotate-y-180 {
+  transform: rotateY(180deg);
+  -webkit-transform: rotateY(180deg);
+}
+
+@media (prefers-color-scheme: dark) {
+  body {
+    color: #f5f5f5;
+    background-color: #121212;
+  }
+}

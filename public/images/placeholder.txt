@@ -1,0 +1,3 @@
+Create the following images:
+1. game-promo.png - A promotional image for the game
+2. game-loading.png - A loading screen for the game
