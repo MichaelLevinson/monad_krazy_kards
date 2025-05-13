@@ -130,9 +130,9 @@ export default function KrazyKards() {
     }> = [];
     
     // If we have Farcaster context, get some friends
-    if (context?.user?.following) {
-      // In a real implementation, we'd use actual friend data
-      // For now, we'll use mock data
+    if (context?.user) {
+      // In a real implementation, we'd use actual friend data based on user.following
+      // For now, we'll use mock data regardless of context
       friendsData = getMockFriends();
     }
     
@@ -227,7 +227,7 @@ export default function KrazyKards() {
         });
         
         // Sort by score descending
-        leaderboard.sort((a, b) => b.score - a.score);
+        leaderboard.sort((a: { score: number }, b: { score: number }) => b.score - a.score);
         
         // Keep only top 20
         leaderboard = leaderboard.slice(0, 20);

@@ -18,11 +18,12 @@ export default function MonadMoments() {
   useEffect(() => {
     // If we have Farcaster context, set the user
     if (context?.user) {
+      // Create user object with safe property access
       const farcasterUser: User = {
-        fid: context.user.fid,
-        username: context.user.username,
-        displayName: context.user.displayName,
-        pfpUrl: context.user.pfp?.url,
+        fid: context.user.fid || 0,
+        username: context.user.username || `user${context.user.fid || 0}`, // Fallback username
+        displayName: context.user.displayName || 'Farcaster User',
+        pfpUrl: 'https://cdn.stamp.fyi/avatar/eth:0x0000000000000000000000000000000000000000?s=300', // Default avatar
       };
       setUser(farcasterUser);
     }
