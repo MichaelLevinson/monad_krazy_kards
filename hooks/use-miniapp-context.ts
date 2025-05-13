@@ -39,7 +39,7 @@ function useMiniAppContext(): ContextResult {
       console.log('Debug mode enabled');
       console.log('Environment:', process.env.NODE_ENV);
       console.log('URL:', typeof window !== 'undefined' ? window.location.href : 'SSR');
-      console.log('Farcaster SDK in window:', typeof window !== 'undefined' && !!window.farcaster);
+      console.log('Farcaster SDK in window:', typeof window !== 'undefined' && !!(window as any).farcaster);
     }
   }, []);
   

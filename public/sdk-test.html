@@ -72,9 +72,9 @@
     
     // Check if the Farcaster SDK is available in the window object
     function checkSDK() {
-      if (window.farcaster) {
+      if (window && (window as any).farcaster) {
         statusEl.innerHTML = '<span style="color:green">✅ SDK Available</span>';
-        farcasterSDK = window.farcaster;
+        farcasterSDK = (window as any).farcaster;
         return true;
       } else {
         statusEl.innerHTML = '<span style="color:red">❌ SDK Not Available</span>';
