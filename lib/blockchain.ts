@@ -52,7 +52,9 @@ export async function getWalletTransactions(address: string, limit = 10) {
 // Check if an address is a contract
 export async function isContract(address: string): Promise<boolean> {
   try {
-    const code = await monadClient.getBytecode({ address });
+    // Convert string address to `0x${string}` type
+    const hexAddress = address as `0x${string}`;
+    const code = await monadClient.getBytecode({ address: hexAddress });
     // No bytecode means it's not a contract
     return code !== undefined && code !== '0x';
   } catch (error) {
@@ -64,7 +66,9 @@ export async function isContract(address: string): Promise<boolean> {
 // Get contract details
 export async function getContractDetails(address: string) {
   try {
-    const code = await monadClient.getBytecode({ address });
+    // Convert string address to `0x${string}` type
+    const hexAddress = address as `0x${string}`;
+    const code = await monadClient.getBytecode({ address: hexAddress });
     
     // No bytecode means it's not a contract
     if (!code || code === '0x') {
@@ -72,7 +76,7 @@ export async function getContractDetails(address: string) {
     }
     
     // Get transaction count as a simple popularity metric
-    const txCount = await monadClient.getTransactionCount({ address });
+    const txCount = await monadClient.getTransactionCount({ address: hexAddress });
     
     return {
       address,
