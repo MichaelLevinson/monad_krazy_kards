@@ -1,7 +1,7 @@
 import postgres from 'postgres';
 
-// Use environment variables for configuration
-const connectionString = process.env.DATABASE_URL;
+// Use environment variables for configuration or mock connection
+const connectionString = process.env.DATABASE_URL || 'postgresql://postgres:postgres@localhost:5432/monad_moments';
 
 // Create a new postgres client
 const sql = postgres(connectionString, {
