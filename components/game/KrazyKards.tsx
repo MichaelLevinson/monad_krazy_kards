@@ -122,7 +122,12 @@ export default function KrazyKards() {
     setGridSize(config.gridSize);
     
     // Generate cards with friends if available
-    let friendsData = [];
+    let friendsData: Array<{
+      fid: number;
+      username: string;
+      displayName: string;
+      pfpUrl: string;
+    }> = [];
     
     // If we have Farcaster context, get some friends
     if (context?.user?.following) {
